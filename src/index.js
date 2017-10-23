@@ -9,5 +9,6 @@ const originWhitelist = (process.env.ORIGINS || '')
 cors_proxy.createServer({
     originWhitelist,
     requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['user-agent', 'x-requested-with', 'referrer', 'referer', 'origin'],
     corsMaxAge: 600,
 }).listen(port, '0.0.0.0', () => console.log(`listening.on ${port}`));
